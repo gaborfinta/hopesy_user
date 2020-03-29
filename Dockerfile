@@ -1,4 +1,4 @@
-FROM node:13-alpine
+FROM node:10-alpine
 
 WORKDIR /app
 
@@ -8,4 +8,4 @@ RUN npm install
 COPY . .
 EXPOSE 3000
 
-CMD ["node", "main.js"]
+CMD ["node", "local.js"]

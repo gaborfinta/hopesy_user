@@ -2,29 +2,34 @@
   "name": "hopesy_user",
   "version": "1.0.0",
   "description": "User service for the hopesy app",
-  "main": "main.js",
+  "main": "firebase_main.js",
   "scripts": {
-    "start": "node main.js",
+    "start": "node local.js",
     "test": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nagybalint/hopesy_user.git"
+    "url": "git+https://github.com/gaborfinta/hopesy_user.git"
   },
   "author": "corona_script",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nagybalint/hopesy_user/issues"
+    "url": "https://github.com/gaborfinta/hopesy_user/issues"
   },
-  "homepage": "https://github.com/nagybalint/hopesy_user#readme",
+  "homepage": "https://github.com/gaborfinta/hopesy_user#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "jest": "^25.2.3"
+    "jest": "^25.2.3",
+    "firebase-admin": "^8.6.0",
+    "firebase-functions": "^3.3.0"
   },
   "jest": {
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
       "/node_modules/"
     ]
+  },
+  "engines": {
+    "node": "10"
   }
 }
