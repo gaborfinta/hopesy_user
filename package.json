@@ -1,0 +1,30 @@
+{
+  "name": "hopesy_user",
+  "version": "1.0.0",
+  "description": "User service for the hopesy app",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nagybalint/hopesy_user.git"
+  },
+  "author": "corona_script",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nagybalint/hopesy_user/issues"
+  },
+  "homepage": "https://github.com/nagybalint/hopesy_user#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jest": "^25.2.3"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  }
+}
