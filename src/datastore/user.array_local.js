@@ -19,7 +19,16 @@ class UserStoreLocal extends DataStore {
     }
 
     getAll() {
-        return this.users;
+        let userList = [];
+        Object.keys(this.users).forEach(id => {
+            userList.push(this.users[id])
+        });;
+        return userList;
+    }
+
+    patch(user) {
+        this.users[user.id] = user;
+        return user.id;
     }
 }
 
