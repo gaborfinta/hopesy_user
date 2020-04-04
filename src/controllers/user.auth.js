@@ -7,12 +7,14 @@ const corsOptions = {
 
 const getAll = (datastore) => async (req, res) => {
     let users = await datastore.getAll();
+    res.header("Access-Control-Allow-Origin", "*");
     res.json(users);
 }
 
 const getById = (datastore) => async (req, res) => {
     const { id } = req.params;
     let user = await datastore.getById(id);
+    res.header("Access-Control-Allow-Origin", "*");
     res.json(user);
 }
 
@@ -21,6 +23,7 @@ const save = (datastore) => async (req, res) => {
     let newUser = {};
     userAttributes.forEach(attribute => newUser[attribute] = req.body[attribute]);
     let newId = await datastore.save(new User(newUser));
+    res.header("Access-Control-Allow-Origin", "*");
     res.json({newId});
 }
 
@@ -38,6 +41,7 @@ const patch = (datastore) => async (req, res) => {
     });
 
     let userId = await datastore.patch(user);
+    res.header("Access-Control-Allow-Origin", "*");
     res.json({userId});
 }
 
