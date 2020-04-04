@@ -1,6 +1,6 @@
 const express = require('express');
 const createRouter = require('./src/router');
-const cors = require('cors');
+const cors = require('cors')({origin: true});
 
 function createApp(datastore) {
     app = express();
