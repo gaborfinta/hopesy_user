@@ -1,4 +1,9 @@
 const User = require('../models/user');
+const cors = require('cors');
+
+const corsOptions = {
+    origin: true,
+}
 
 const getAll = (datastore) => async (req, res) => {
     let users = await datastore.getAll();
@@ -37,10 +42,10 @@ const patch = (datastore) => async (req, res) => {
 }
 
 const addRoutes = (router, datastore) => {
-    router.get('/', getAll(datastore));
-    router.post('/', save(datastore));
-    router.get('/:id/', getById(datastore));
-    router.patch('/:id/', patch(datastore));
+    router.get('/', cors(corsOptions), getAll(datastore));
+    router.post('/', cors(corsOptions), save(datastore));
+    router.get('/:id/', cors(corsOptions), getById(datastore));
+    router.patch('/:id/', cors(corsOptions), patch(datastore));
 }
 
 module.exports = addRoutes;
