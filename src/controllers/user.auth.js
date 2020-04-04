@@ -50,8 +50,8 @@ const addRoutes = (router, datastore) => {
     router.post('/', cors(corsOptions), save(datastore));
     router.get('/:id/', cors(corsOptions), getById(datastore));
     router.patch('/:id/', cors(corsOptions), patch(datastore));
-    router.options('/', cors());
-    router.options('/:id/', cors());
+    router.options('/', cors(corsOptions));
+    router.options('/:id/', cors(corsOptions));
 }
 
 module.exports = addRoutes;
