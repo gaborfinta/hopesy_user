@@ -7,7 +7,7 @@ function DataStoreFactory(env) {
             "userStore": new UserStoreLocal(),
             "pictureStore": undefined
         }
-    } else if (env == "firebase") {
+    } else if (env === "firebase") {
         return {
             "userStore": new UserStoreFirebase(),
             "pictureStore": undefined

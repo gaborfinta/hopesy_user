@@ -21,7 +21,7 @@ class UserStoreLocal extends DataStore {
         let userList = [];
         Object.keys(this.users).forEach(id => {
             userList.push(this.users[id])
-        });;
+        });
         return userList;
     }
 
