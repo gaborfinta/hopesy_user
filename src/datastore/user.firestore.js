@@ -8,6 +8,8 @@ class UserStoreFirebase extends DataStore {
     }
 
     async save(user) {
+        console.log("Login function called");
+        console.log(user);
         const { id } = user;
         if (id === undefined) {
             throw Error("User id not defined");
@@ -21,6 +23,7 @@ class UserStoreFirebase extends DataStore {
 
         await admin.firestore().collection('users').doc(id).set(user.serialize());
 
+        console.log("Funtion will exit");
         return id;
     }
 
