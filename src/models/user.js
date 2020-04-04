@@ -15,6 +15,13 @@ class User {
         return User.keys;
     }
 
+    serialize() {
+        let u = {};
+        User.keys.forEach(key => {
+            u[key] = this[key];
+        });
+    }
+
     validate() {
         
     }

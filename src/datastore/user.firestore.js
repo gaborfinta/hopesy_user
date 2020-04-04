@@ -19,7 +19,7 @@ class UserStoreFirebase extends DataStore {
             throw Error("User already exists in firestore");
         }
 
-        await admin.firestore().collection('users').doc(id).set(user);
+        await admin.firestore().collection('users').doc(id).set(user.serialize());
 
         return id;
     }
@@ -47,7 +47,7 @@ class UserStoreFirebase extends DataStore {
 
     async patch(user) {
         const { id } = user;
-        await admin.firestore().collection('users').doc(id).set(user);
+        await admin.firestore().collection('users').doc(id).set(user.serialize());
         return id;
     }
 }
