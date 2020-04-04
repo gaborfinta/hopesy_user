@@ -3,6 +3,8 @@ const functions = require('firebase-functions');
 const createApp = require('./app');
 const DataStoreFactory = require('./src/datastore/datastorefactory');
 
-const app = createApp(DataStoreFactory('local'));
+admin.initializeApp(functions.config().firebase);
+
+const app = createApp(DataStoreFactory('firebase'));
 
 exports.user = functions.https.onRequest(app);

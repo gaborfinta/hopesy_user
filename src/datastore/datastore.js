@@ -9,19 +9,19 @@ class DataStore {
         }
     }
 
-    save(user) {
+    async save(user) {
         throwNotImplementedError();
     }
 
-    getById(id) {
+    async getById(id) {
         throwNotImplementedError();
     }
 
-    getAll() {
+    async getAll() {
         throwNotImplementedError();
     }
 
-    patch(user) {
+    async patch(user) {
         throwNotImplementedError();
     }
 }

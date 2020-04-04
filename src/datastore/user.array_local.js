@@ -1,4 +1,3 @@
-const User = require('../models/user');
 const DataStore = require('./datastore');
 
 class UserStoreLocal extends DataStore {
@@ -8,17 +7,17 @@ class UserStoreLocal extends DataStore {
         this.users = {};
     }
 
-    save(user) {
+    async save(user) {
         user.id = this.userCount++;
         this.users[user.id] = user;
         return user.id;
     }
 
-    getById(id) {
+    async getById(id) {
         return this.users[id];
     }
 
-    getAll() {
+    async getAll() {
         let userList = [];
         Object.keys(this.users).forEach(id => {
             userList.push(this.users[id])
@@ -26,7 +25,7 @@ class UserStoreLocal extends DataStore {
         return userList;
     }
 
-    patch(user) {
+    async patch(user) {
         this.users[user.id] = user;
         return user.id;
     }
