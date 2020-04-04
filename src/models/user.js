@@ -20,6 +20,8 @@ class User {
         User.keys.forEach(key => {
             u[key] = this[key];
         });
+
+        return u;
     }
 
     validate() {
