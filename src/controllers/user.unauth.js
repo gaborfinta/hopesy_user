@@ -46,7 +46,7 @@ const patch = (datastore) => async (req, res) => {
     const { id } = req.params;
     let user = await datastore.getById(id);
     if (user === undefined) {
-        return res.status(404);
+        return res.status(404).send();
     }
     let userAttributes = User.getKeys();
     userAttributes.forEach(attribute => {
