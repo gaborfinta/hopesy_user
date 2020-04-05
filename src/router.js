@@ -1,5 +1,5 @@
 const express = require('express');
-const addRoutes = require('./controllers/user.auth');
+const addRoutes = require('./controllers/user.unauth');
 
 
 function createRouter(datastore) {
