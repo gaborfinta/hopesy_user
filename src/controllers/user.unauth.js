@@ -67,7 +67,7 @@ const addRoutes = (router, datastore) => {
     router.get('/', cors(corsOptions), getAll(datastore));
     router.post('/', cors(corsOptions), save(datastore));
     router.get('/:id/', cors(corsOptions), getById(datastore));
-    router.patch('/:id/', cors(corsOptions), patch(datastore));
+    router.put('/:id/', cors(corsOptions), patch(datastore));
     router.options('/', cors(corsOptions));
     router.options('/:id/', cors(corsOptions));
 }
