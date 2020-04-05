@@ -6,32 +6,47 @@ const corsOptions = {
 }
 
 const getAll = (datastore) => async (req, res) => {
-    let users = await datastore.getAll();
-    res.header("Access-Control-Allow-Origin", "*");
-    res.json(users);
+    try {
+        let users = await datastore.getAll();
+        res.header("Access-Control-Allow-Origin", "*");
+        res.json(users);
+    } catch(err) {
+        res.status(500).send({ error: err.message });
+    }
 }
 
 const getById = (datastore) => async (req, res) => {
     const { id } = req.params;
-    let user = await datastore.getById(id);
-    res.header("Access-Control-Allow-Origin", "*");
-    res.json(user);
+    try {
+        let user = await datastore.getById(id);
+        if (!user) {
+            return res.status(404);
+        }
+        res.header("Access-Control-Allow-Origin", "*");
+        res.json(user);
+    } catch(err) {
+        res.status(500).send({ error: err.message });
+    }
 }
 
 const save = (datastore) => async (req, res) => {
     const userAttributes = User.getKeys();
     let newUser = {};
     userAttributes.forEach(attribute => newUser[attribute] = req.body[attribute]);
-    let newId = await datastore.save(new User(newUser));
-    res.header("Access-Control-Allow-Origin", "*");
-    res.json({newId});
+    try {
+        let newId = await datastore.save(new User(newUser));
+        res.header("Access-Control-Allow-Origin", "*");
+        res.json({newId});
+    } catch (err) {
+        res.status(400).send({ error: err.message });
+    }
 }
 
 const patch = (datastore) => async (req, res) => {
     const { id } = req.params;
     let user = await datastore.getById(id);
     if (user === undefined) {
-        // throw error
+        return res.status(404);
     }
     let userAttributes = User.getKeys();
     userAttributes.forEach(attribute => {
@@ -39,10 +54,13 @@ const patch = (datastore) => async (req, res) => {
             user[attribute] = req.body[attribute];
         }
     });
-
-    let userId = await datastore.patch(user);
-    res.header("Access-Control-Allow-Origin", "*");
-    res.json({userId});
+    try {
+        let userId = await datastore.patch(user);
+        res.header("Access-Control-Allow-Origin", "*");
+        res.json({userId});
+    } catch (err) {
+        res.status(500).send({ error: err.message });
+    }
 }
 
 const addRoutes = (router, datastore) => {
