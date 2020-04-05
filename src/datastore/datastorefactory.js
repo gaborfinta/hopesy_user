@@ -4,13 +4,11 @@ const UserStoreFirebase = require('./user.firestore');
 function DataStoreFactory(env) {
     if (env === "local") {
         return {
-            "userStore": new UserStoreLocal(),
-            "pictureStore": undefined
+            "userStore": new UserStoreLocal()
         }
     } else if (env === "firebase") {
         return {
-            "userStore": new UserStoreFirebase(),
-            "pictureStore": undefined
+            "userStore": new UserStoreFirebase()
         }
     }
 }
