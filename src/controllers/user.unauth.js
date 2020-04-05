@@ -20,7 +20,7 @@ const getById = (datastore) => async (req, res) => {
     try {
         let user = await datastore.getById(id);
         if (!user) {
-            return res.status(404);
+            return res.status(404).send();
         }
         res.header("Access-Control-Allow-Origin", "*");
         res.json(user);
